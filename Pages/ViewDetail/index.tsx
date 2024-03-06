@@ -40,14 +40,14 @@ const ViewDetail = () => {
 
   const CarouselCardItem = ({ item }: any) => (
     <View style={styles.cardContainer}>
-      <Image source={{ uri: item }} style={styles.image} resizeMode="cover" />
+      <Image source={{ uri: item }} style={styles.image} />
     </View>
   );
 
   return (
     <View style={styles.container}>
       {!isLoading ? (
-        <>
+        <View style={{ height: "auto" }}>
           {viewProduct && (
             <Carousel
               layout="stack"
@@ -60,14 +60,14 @@ const ViewDetail = () => {
           )}
           <View style={styles.details}>
             <Text style={styles.heading}>{viewProduct?.title}</Text>
-            <Text>Phone: {viewProduct?.brand}</Text>
+            <Text>Product: {viewProduct?.brand}</Text>
             <Text>Detail: {viewProduct?.description}</Text>
             <Text>Discount: {viewProduct?.discountPercentage}</Text>
             <Text>Price: {viewProduct?.price}</Text>
             <Text>Available: {viewProduct?.stock}</Text>
             <Text>Rating: {viewProduct?.rating}</Text>
           </View>
-        </>
+        </View>
       ) : (
         <View style={styles.Loading}>
           <ActivityIndicator size="large" color="#0000ff" />
@@ -83,8 +83,8 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   cardContainer: {
-    height: 400,
-    width: "auto",
+    height: 350,
+    maxWidth: "100%",
     backgroundColor: "lightgray",
     borderRadius: 10,
     overflow: "hidden",
@@ -99,8 +99,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   details: {
-    position: "relative",
-    bottom: 40,
+    marginTop: 20,
   },
   Loading: {
     flex: 1,
