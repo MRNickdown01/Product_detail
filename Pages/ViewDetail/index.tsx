@@ -7,13 +7,14 @@ import {
   StyleSheet,
   Image,
   ActivityIndicator,
+  Button,
 } from "react-native";
 import { products } from "../../types";
 import Carousel from "react-native-snap-carousel";
 const SLIDER_WIDTH = 330;
 const ITEM_WIDTH = 300;
 
-const ViewDetail = () => {
+const ViewDetail = ({ navigation }: any) => {
   const [viewProduct, setViewProduct]: any = useState(null);
   const isCarousel = useRef(null);
   const route = useRoute();
@@ -44,8 +45,13 @@ const ViewDetail = () => {
     </View>
   );
 
+  const navigate = () => {
+    navigation.navigate("device");
+  };
+
   return (
     <View style={styles.container}>
+      <Button title="click" onPress={() => navigate()} />
       {!isLoading ? (
         <View style={{ height: "auto" }}>
           {viewProduct && (
